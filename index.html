@@ -3,83 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name - Portfolio</title>
+  <title>Your Name — Fullstack Developer</title>
   <style>
+    /* Reset some default styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      color: #222;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     header {
-      background: #222;
-      color: white;
+      background-color: #0d1117;
+      color: #58a6ff;
       padding: 2rem 1rem;
       text-align: center;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
     }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    header h1 {
+      margin: 0 0 0.3rem;
+      font-weight: 700;
+      font-size: 2.5rem;
     }
-    h1 {
-      margin-bottom: 0.2rem;
+    header p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #8b949e;
+    }
+    nav {
+      margin-top: 1rem;
     }
     nav a {
-      color: #61dafb;
-      margin: 0 1rem;
+      color: #58a6ff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      margin: 0 1rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
-      text-decoration: underline;
+    nav a:hover,
+    nav a:focus {
+      color: #1f6feb;
+      outline: none;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
     section {
-      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #58a6ff;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    ul li {
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
     }
     footer {
+      background: #0d1117;
+      color: #8b949e;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       font-size: 0.9rem;
-      color: #777;
-      border-top: 1px solid #ddd;
-      margin-top: 4rem;
+      border-top: 1px solid #22272e;
+      margin-top: auto;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        margin: 0 0.5rem;
+        font-size: 0.95rem;
+      }
+      main {
+        margin: 2rem auto;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Your Name</h1>
-    <p>Fullstack Web Developer | PHP, Laravel, React</p>
-    <nav>
+    <p>Fullstack Web Developer | PHP, Laravel &amp; Modern JS</p>
+    <nav role="navigation" aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
   <main>
-    <section id="about">
+    <section id="about" tabindex="-1">
       <h2>About Me</h2>
-      <p>Hi! I'm a passionate fullstack web developer specializing in Laravel and modern front-end frameworks. I build clean, scalable web apps that deliver real value.</p>
+      <p>Hello! I'm a passionate fullstack web developer with over 5 years of experience building scalable, maintainable applications. I specialize in Laravel for backend and React for frontend, focusing on clean code and real business impact.</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" tabindex="-1">
       <h2>Projects</h2>
       <ul>
-        <li><strong>Project One</strong> – A cool web app built with Laravel and React.</li>
-        <li><strong>Project Two</strong> – An open-source tool for XYZ.</li>
-        <li><strong>Project Three</strong> – Portfolio website and blog.</li>
+        <li><strong>Project One:</strong> A realtime collaboration app built with Laravel and React.</li>
+        <li><strong>Project Two:</strong> An open-source CLI tool that automates deployment.</li>
+        <li><strong>Project Three:</strong> Personal portfolio and blog showcasing my work and insights.</li>
       </ul>
     </section>
 
-    <section id="contact">
+    <section id="contact" tabindex="-1">
       <h2>Contact</h2>
-      <p>Feel free to reach out:</p>
+      <p>Feel free to get in touch with me through any of the following:</p>
       <ul>
         <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-        <li>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
+        <li>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a></li>
       </ul>
     </section>
   </main>
