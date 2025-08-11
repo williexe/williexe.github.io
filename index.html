@@ -1,118 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Fullstack Developer</title>
+  <title>Willie Manders — Fullstack Developer</title>
   <style>
-    /* Reset some default styles */
+    :root {
+      --color-bg-light: #f4f7f9;
+      --color-text-light: #222;
+      --color-primary: #58a6ff;
+      --color-primary-hover: #1f6feb;
+      --color-bg-dark: #0d1117;
+      --color-text-dark: #c9d1d9;
+      --color-muted-dark: #8b949e;
+      --transition: 0.3s ease;
+    }
+    /* Reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f7f9;
-      color: #222;
+      background-color: var(--color-bg-light);
+      color: var(--color-text-light);
       line-height: 1.6;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    body.dark {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-dark);
     }
     header {
-      background-color: #0d1117;
-      color: #58a6ff;
+      background-color: var(--color-bg-dark);
+      color: var(--color-primary);
       padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    body:not(.dark) header {
+      background-color: var(--color-primary);
+      color: var(--color-bg-light);
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
     }
     header h1 {
       margin: 0 0 0.3rem;
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 2.75rem;
     }
     header p {
       margin: 0;
-      font-weight: 500;
-      font-size: 1.1rem;
-      color: #8b949e;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+    }
+    body:not(.dark) header p {
+      color: var(--color-bg-light);
     }
     nav {
       margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
     nav a {
-      color: #58a6ff;
+      color: currentColor;
       text-decoration: none;
-      font-weight: 600;
-      margin: 0 1rem;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color var(--transition);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      bottom: 0;
+      left: 0;
+      transition: width var(--transition);
+      border-radius: 1px;
+    }
+    nav a:hover::after,
+    nav a:focus-visible::after {
+      width: 100%;
     }
     nav a:hover,
-    nav a:focus {
-      color: #1f6feb;
-      outline: none;
+    nav a:focus-visible {
+      color: var(--color-primary-hover);
+      outline-offset: 2px;
     }
     main {
       flex-grow: 1;
       max-width: 900px;
-      margin: 3rem auto;
+      margin: 3rem auto 5rem;
       padding: 0 1rem;
     }
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
     }
     section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #58a6ff;
-      padding-bottom: 0.3rem;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 3px solid var(--color-primary);
+      padding-bottom: 0.4rem;
     }
     ul {
       list-style-type: disc;
-      padding-left: 1.5rem;
+      padding-left: 1.6rem;
     }
     ul li {
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
     }
     a {
-      color: #0366d6;
+      color: var(--color-primary);
       text-decoration: none;
+      transition: color var(--transition);
     }
     a:hover,
-    a:focus {
+    a:focus-visible {
+      color: var(--color-primary-hover);
       text-decoration: underline;
-      outline: none;
+      outline-offset: 2px;
     }
     footer {
-      background: #0d1117;
-      color: #8b949e;
+      background-color: var(--color-bg-dark);
+      color: var(--color-muted-dark);
       text-align: center;
       padding: 1.5rem 1rem;
       font-size: 0.9rem;
       border-top: 1px solid #22272e;
       margin-top: auto;
+      transition: background-color var(--transition), color var(--transition);
     }
-    /* Responsive tweaks */
+    body:not(.dark) footer {
+      background-color: var(--color-primary);
+      color: var(--color-bg-light);
+      border-top-color: rgba(0,0,0,0.1);
+    }
+    /* Typing effect styles */
+    .typing {
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      min-height: 1.6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--color-primary);
+      animation: blink-caret 0.75s step-end infinite;
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: var(--color-primary); }
+    }
+    /* Dark toggle button */
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: 2px solid var(--color-primary);
+      border-radius: 9999px;
+      padding: 0.25rem 0.6rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      user-select: none;
+      z-index: 1100;
+    }
+    .toggle-btn:hover,
+    .toggle-btn:focus-visible {
+      background-color: var(--color-primary);
+      color: var(--color-bg-dark);
+      border-color: var(--color-primary-hover);
+      outline: none;
+    }
+    /* Responsive */
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
       }
-      nav a {
-        margin: 0 0.5rem;
-        font-size: 0.95rem;
+      nav {
+        gap: 1rem;
+        font-size: 1rem;
       }
       main {
-        margin: 2rem auto;
+        margin: 2rem auto 4rem;
       }
     }
   </style>
 </head>
 <body>
+  <button class="toggle-btn" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">🌙</button>
+
   <header>
     <h1>Your Name</h1>
-    <p>Fullstack Web Developer | PHP, Laravel &amp; Modern JS</p>
+    <div class="typing" aria-live="polite" aria-atomic="true"></div>
     <nav role="navigation" aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -123,25 +222,23 @@
   <main>
     <section id="about" tabindex="-1">
       <h2>About Me</h2>
-      <p>Hello! I'm a passionate fullstack web developer with over 5 years of experience building scalable, maintainable applications. I specialize in Laravel for backend and React for frontend, focusing on clean code and real business impact.</p>
+      <p>I'm a passionate fullstack web developer with over 5 years of experience building scalable, maintainable applications. I specialize in Laravel for backend and Vue.js for frontend, focusing on clean code and real business impact.</p>
     </section>
 
     <section id="projects" tabindex="-1">
       <h2>Projects</h2>
       <ul>
-        <li><strong>Project One:</strong> A realtime collaboration app built with Laravel and React.</li>
-        <li><strong>Project Two:</strong> An open-source CLI tool that automates deployment.</li>
-        <li><strong>Project Three:</strong> Personal portfolio and blog showcasing my work and insights.</li>
+        <li><strong>Realtime Collaboration App:</strong> Built with Laravel and React for seamless teamwork.</li>
+        <li><strong>Open-Source CLI Tool:</strong> Automates deployment workflows and boosts productivity.</li>
+        <li><strong>Portfolio & Blog:</strong> Showcases my work, insights, and ongoing learning.</li>
       </ul>
     </section>
 
     <section id="contact" tabindex="-1">
       <h2>Contact</h2>
-      <p>Feel free to get in touch with me through any of the following:</p>
+      <p>Reach out via:</p>
       <ul>
-        <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-        <li>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a></li>
+        <li>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/williexe</a></li>
       </ul>
     </section>
   </main>
@@ -149,5 +246,81 @@
   <footer>
     &copy; 2025 Your Name. All rights reserved.
   </footer>
+
+  <script>
+    // Dark mode toggle with localStorage persistence
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const body = document.body;
+    const darkModeKey = 'darkModeEnabled';
+
+    function updateToggleButton() {
+      toggleBtn.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+      toggleBtn.setAttribute('aria-pressed', body.classList.contains('dark'));
+    }
+
+    function applyDarkMode(isDark) {
+      if (isDark) {
+        body.classList.add('dark');
+      } else {
+        body.classList.remove('dark');
+      }
+      updateToggleButton();
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark');
+      applyDarkMode(!isDark);
+      localStorage.setItem(darkModeKey, !isDark);
+    });
+
+    // Initialize from localStorage or prefers-color-scheme
+    const savedMode = localStorage.getItem(darkModeKey);
+    if (savedMode !== null) {
+      applyDarkMode(savedMode === 'true');
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyDarkMode(prefersDark);
+    }
+
+    // Typing effect for tagline
+    const typingEl = document.querySelector('.typing');
+    const phrases = [
+      "Fullstack Developer",
+      "Laravel & React Specialist",
+      "Clean Code Enthusiast",
+      "Building Scalable Apps"
+    ];
+    let currentPhraseIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseBetween = 1500;
+
+    function type() {
+      const currentPhrase = phrases[currentPhraseIndex];
+      if (!isDeleting) {
+        typingEl.textContent = currentPhrase.slice(0, currentCharIndex + 1);
+        currentCharIndex++;
+        if (currentCharIndex === currentPhrase.length) {
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, pauseBetween);
+          return;
+        }
+      } else {
+        typingEl.textContent = currentPhrase.slice(0, currentCharIndex - 1);
+        currentCharIndex--;
+        if (currentCharIndex === 0) {
+          isDeleting = false;
+          currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        }
+      }
+      setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    }
+
+    type();
+  </script>
 </body>
 </html>
