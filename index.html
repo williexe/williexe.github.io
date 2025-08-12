@@ -14,27 +14,27 @@
       --color-text-dark: #c9d1d9;
       --color-muted-dark: #8b949e;
       --transition: 0.3s ease;
-      
-      --fs-h1: clamp(1.5rem, 4vw + 1rem, 3.5rem);
+
+      --fs-h1: clamp(1.2rem, 3vw + 0.8rem, 2.5rem);
       --fs-h2: clamp(1.25rem, 3vw + 0.5rem, 2.5rem);
       --fs-body: clamp(0.9rem, 2vw + 0.3rem, 1.2rem);
-      --fs-nav: clamp(0.8rem, 2vw + 0.2rem, 1.1rem);
-      --fs-typing: clamp(1rem, 3vw + 0.2rem, 1.6rem);
-      
+      --fs-nav: clamp(0.8rem, 2vw + 0.2rem, 1rem);
+      --fs-typing: clamp(0.9rem, 2vw + 0.2rem, 1.3rem);
+
       --space-xs: clamp(0.5rem, 2vw, 1rem);
       --space-s: clamp(1rem, 3vw, 2rem);
       --space-m: clamp(1.5rem, 4vw, 3rem);
       --space-l: clamp(2rem, 6vw, 5rem);
       --space-xl: clamp(3rem, 8vw, 8rem);
-      
+
       --container-max: min(90vw, 900px);
-      --header-padding: clamp(1rem, 4vw, 2rem);
+      --header-padding: clamp(0.8rem, 2vw, 1.2rem);
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
     }
-    
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,18 +42,18 @@
       color: var(--color-text-light);
       line-height: 1.6;
       min-height: 100vh;
-      min-height: 100dvh; 
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       transition: background-color var(--transition), color var(--transition);
       font-size: var(--fs-body);
     }
-    
+
     body.dark {
       background-color: var(--color-bg-dark);
       color: var(--color-text-dark);
     }
-    
+
     header {
       background-color: var(--color-bg-dark);
       color: var(--color-primary);
@@ -65,34 +65,35 @@
       z-index: 1000;
       transition: background-color var(--transition), color var(--transition);
       container-type: inline-size;
+      position: relative;
     }
-    
+
     body:not(.dark) header {
       background-color: var(--color-primary);
       color: var(--color-bg-light);
       box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
     }
-    
+
     header h1 {
       margin: 0 0 var(--space-xs);
       font-weight: 700;
       font-size: var(--fs-h1);
       letter-spacing: -0.02em;
     }
-    
+
     header p {
       margin: 0;
       font-weight: 600;
       font-size: var(--fs-body);
       color: var(--color-primary);
     }
-    
+
     body:not(.dark) header p {
       color: var(--color-bg-light);
     }
-    
+
     nav {
-      margin-top: var(--space-s);
+      margin-top: var(--space-xs);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -100,7 +101,7 @@
       font-weight: 600;
       font-size: var(--fs-nav);
     }
-    
+
     nav a {
       color: currentColor;
       text-decoration: none;
@@ -111,7 +112,7 @@
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
     }
-    
+
     nav a::after {
       content: '';
       position: absolute;
@@ -124,30 +125,30 @@
       transition: width var(--transition);
       border-radius: 1px;
     }
-    
+
     nav a:hover::after,
     nav a:focus-visible::after {
       width: calc(100% - var(--space-s));
     }
-    
+
     nav a:hover,
     nav a:focus-visible {
       color: var(--color-primary-hover);
       outline-offset: 2px;
     }
-    
+
     main {
       flex-grow: 1;
       width: var(--container-max);
       margin: var(--space-m) auto var(--space-l);
       padding: 0 var(--space-s);
     }
-    
+
     section {
       margin-bottom: var(--space-xl);
       scroll-margin-top: calc(var(--header-padding) * 2 + var(--fs-h1));
     }
-    
+
     section h2 {
       font-size: var(--fs-h2);
       margin-bottom: var(--space-s);
@@ -169,12 +170,12 @@
       word-wrap: break-word;
       hyphens: auto;
     }
-    
+
     @keyframes gradient-shift {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
     }
-    
+
     section h2::before {
       content: '';
       position: absolute;
@@ -191,11 +192,11 @@
       transition: left 0.5s ease-in-out;
       z-index: -1;
     }
-    
+
     section h2:hover::before {
       left: 100%;
     }
-    
+
     /* Fallback for browsers that don't support background-clip: text */
     @supports not (-webkit-background-clip: text) {
       section h2 {
@@ -204,24 +205,24 @@
         color: var(--color-primary);
       }
     }
-    
+
     section p {
       margin-bottom: var(--space-s);
       max-width: 65ch;
     }
-    
+
     ul {
       list-style-type: disc;
       padding-left: var(--space-s);
       max-width: 65ch;
     }
-    
+
     ul li {
       margin-bottom: var(--space-s);
       font-size: var(--fs-body);
       line-height: 1.7;
     }
-    
+
     a {
       color: var(--color-primary);
       text-decoration: none;
@@ -229,14 +230,14 @@
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
     }
-    
+
     a:hover,
     a:focus-visible {
       color: var(--color-primary-hover);
       text-decoration: underline;
       outline-offset: 2px;
     }
-    
+
     footer {
       background-color: var(--color-bg-dark);
       color: var(--color-muted-dark);
@@ -247,13 +248,13 @@
       margin-top: auto;
       transition: background-color var(--transition), color var(--transition);
     }
-    
+
     body:not(.dark) footer {
       background-color: var(--color-primary);
       color: var(--color-bg-light);
       border-top-color: rgba(0,0,0,0.1);
     }
-    
+
     .typing {
       font-weight: 600;
       font-size: var(--fs-typing);
@@ -268,16 +269,16 @@
       max-width: 100%;
       box-sizing: border-box;
     }
-    
+
     @keyframes blink-caret {
       0%, 100% { border-color: transparent; }
       50% { border-color: var(--color-primary); }
     }
-    
+
     .logo-btn {
       position: absolute;
-      top: var(--space-s);
-      left: var(--space-s);
+      top: clamp(0.5rem, 2vw, 1rem);
+      left: clamp(0.5rem, 2vw, 1rem);
       background: transparent;
       border: none;
       cursor: pointer;
@@ -285,39 +286,39 @@
       border-radius: clamp(6px, 1vw, 12px);
       transition: background-color 0.3s, transform 0.2s;
       z-index: 1100;
-      width: clamp(50px, 8vw, 80px);
-      height: clamp(50px, 8vw, 80px);
+      width: clamp(40px, 6vw, 60px);
+      height: clamp(40px, 6vw, 60px);
       display: flex;
       align-items: center;
       justify-content: center;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
     }
-    
+
     .logo-btn:hover,
     .logo-btn:focus-visible {
       background-color: rgba(88, 166, 255, 0.1);
       transform: scale(1.05);
       outline: none;
     }
-    
+
     .logo-btn:active {
       transform: scale(0.95);
     }
-    
+
     .logo-btn svg {
-      width: clamp(40px, 6vw, 60px);
-      height: clamp(40px, 6vw, 60px);
+      width: clamp(30px, 5vw, 45px);
+      height: clamp(30px, 5vw, 45px);
     }
-    
+
     .toggle-btn {
       position: absolute;
-      top: var(--space-s);
-      right: var(--space-s);
+      top: clamp(0.5rem, 2vw, 1rem);
+      right: clamp(0.5rem, 2vw, 1rem);
       background: transparent;
       border: 2px solid var(--color-primary);
       border-radius: 9999px;
-      padding: var(--space-xs) clamp(0.6rem, 2vw, 1rem);
+      padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 2vw, 0.8rem);
       cursor: pointer;
       font-weight: 600;
       font-size: clamp(0.8rem, 1.5vw + 0.2rem, 0.95rem);
@@ -327,10 +328,13 @@
       z-index: 1100;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
-      min-width: clamp(40px, 8vw, 50px);
-      min-height: clamp(32px, 6vw, 40px);
+      min-width: clamp(35px, 6vw, 45px);
+      min-height: clamp(30px, 5vw, 35px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    
+
     .toggle-btn:hover,
     .toggle-btn:focus-visible {
       background-color: var(--color-primary);
@@ -338,20 +342,22 @@
       border-color: var(--color-primary-hover);
       outline: none;
     }
-    
+
+    /* Always show logo and toggle - remove problematic media queries */
     @container (max-width: 400px) {
       nav {
         flex-direction: column;
         align-items: center;
         gap: var(--space-xs);
+        margin-top: clamp(0.3rem, 1vw, 0.5rem);
       }
-      
+
       nav a {
         padding: var(--space-xs) var(--space-s);
         min-width: 120px;
         text-align: center;
       }
-      
+
       section h2 {
         font-size: clamp(1.1rem, 5vw, 1.8rem);
         text-align: center;
@@ -359,7 +365,7 @@
         word-break: break-word;
       }
     }
-    
+
     @media (max-width: 480px) {
       .typing {
         font-size: clamp(0.9rem, 4vw, 1.2rem);
@@ -368,7 +374,7 @@
         animation: none;
         text-align: center;
       }
-      
+
       section h2 {
         font-size: clamp(1rem, 6vw, 1.6rem);
         text-align: center;
@@ -384,22 +390,22 @@
         );
       }
     }
-    
+
     @media (max-width: 600px) {
       main {
         margin: var(--space-s) auto var(--space-m);
       }
-      
+
       section {
         margin-bottom: var(--space-m);
       }
-      
+
       section h2 {
         font-size: clamp(1.1rem, 5.5vw, 1.8rem);
         margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
         position: relative;
       }
-      
+
       section h2::after {
         content: '';
         position: absolute;
@@ -416,35 +422,32 @@
         border-radius: 2px;
         transition: width 0.3s ease;
       }
-      
+
       section h2:hover::after {
         width: 60%;
       }
     }
-    
+
+    /* Removed the landscape media query that hides elements */
     @media (max-height: 500px) and (orientation: landscape) {
       header {
-        position: relative;
-        padding: var(--space-s);
+        position: sticky;
+        padding: clamp(0.5rem, 1.5vw, 0.8rem);
       }
-      
+
       header h1 {
-        font-size: clamp(1.2rem, 5vw, 2rem);
+        font-size: clamp(1rem, 4vw, 1.8rem);
       }
-      
-      .typing {
-        display: none;
-      }
-      
+
       nav {
-        margin-top: var(--space-xs);
-        gap: var(--space-s);
+        margin-top: clamp(0.2rem, 1vw, 0.4rem);
+        gap: var(--space-xs);
       }
-      
+
       main {
         margin: var(--space-s) auto;
       }
-      
+
       section h2 {
         font-size: clamp(1rem, 4vw, 1.5rem);
         margin-bottom: var(--space-xs);
@@ -456,31 +459,24 @@
         border-bottom: 2px solid var(--color-primary);
         border-left: 3px solid var(--color-primary);
       }
-      
-      .logo-btn,
-      .toggle-btn {
-        top: var(--space-xs);
-        width: clamp(35px, 6vw, 45px);
-        height: clamp(35px, 6vw, 45px);
-      }
     }
-    
+
     @media (min-width: 1200px) {
       header {
-        padding: var(--space-l) var(--space-s);
+        padding: clamp(1rem, 3vw, 1.5rem) var(--space-s);
       }
-      
+
       main {
         margin: var(--space-l) auto var(--space-xl);
       }
-      
+
       section h2 {
         font-size: clamp(2rem, 3vw, 3rem);
         position: relative;
         display: inline-block;
         padding-right: var(--space-s);
       }
-      
+
       section h2::after {
         content: '';
         position: absolute;
@@ -495,12 +491,12 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      
+
       section h2:hover::after {
         opacity: 1;
       }
     }
-    
+
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       .logo-btn svg,
       .toggle-btn {
@@ -508,73 +504,73 @@
         image-rendering: crisp-edges;
       }
     }
-    
+
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      
+
       .typing {
         animation: none;
         border-right: none;
       }
-      
+
       section h2 {
         animation: none;
       }
-      
+
       section h2::before,
       section h2::after {
         transition: none;
       }
     }
-    
+
     @media (prefers-contrast: high) {
       :root {
         --color-primary: #0066cc;
         --color-primary-hover: #004499;
       }
-      
+
       nav a::after {
         height: 3px;
       }
-      
+
       section h2 {
         border-bottom-width: 4px;
       }
     }
-    
+
     @media print {
       .logo-btn,
       .toggle-btn,
       header {
         display: none;
       }
-      
+
       body {
         background: white !important;
         color: black !important;
         font-size: 12pt;
       }
-      
+
       main {
         margin: 0;
         max-width: none;
         padding: 0;
       }
-      
+
       section {
         page-break-inside: avoid;
         margin-bottom: 20pt;
       }
-      
+
       a {
         color: black !important;
         text-decoration: underline;
       }
-      
+
       a[href^="http"]:after {
         content: " (" attr(href) ")";
         font-size: 10pt;
@@ -588,16 +584,16 @@
       <g fill="#00BFFF">
         <path d="M15 25 L20 65 L25 45 L30 65 L35 25" stroke="#00BFFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M65 25 L70 65 L75 45 L80 65 L85 25" stroke="#00BFFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        
+
         <circle cx="42" cy="35" r="2" fill="#00BFFF"/>
         <circle cx="48" cy="45" r="2" fill="#00BFFF"/>
         <circle cx="54" cy="55" r="2" fill="#00BFFF"/>
-        
+
         <line x1="35" y1="35" x2="42" y2="35" stroke="#00BFFF" stroke-width="2"/>
         <line x1="42" y1="35" x2="48" y2="45" stroke="#00BFFF" stroke-width="2"/>
         <line x1="48" y1="45" x2="54" y2="55" stroke="#00BFFF" stroke-width="2"/>
         <line x1="54" y1="55" x2="65" y2="55" stroke="#00BFFF" stroke-width="2"/>
-        
+
         <path d="M8 20 L5 25 L5 65 L8 70" stroke="#00BFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
         <path d="M92 20 L95 25 L95 65 L92 70" stroke="#00BFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
       </g>
