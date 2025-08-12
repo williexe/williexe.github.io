@@ -850,10 +850,10 @@
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">JavaScript/NuxtJS</span>
-                                    <span class="skill-level"> 75%</span>
+                                    <span class="skill-level"> 85%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
+                                    <div class="skill-progress" data-width="85"></div>
                                 </div>
                             </div>
                         </div>
@@ -1049,11 +1049,9 @@
             </section>
         </main>
 
-        <!-- Back to top button -->
         <button class="back-to-top" id="backToTop">↑</button>
 
         <script>
-            // Theme toggle functionality
             const themeToggle = document.getElementById("themeToggle");
             const body = document.body;
             const darkModeKey = "darkModeEnabled";
@@ -1077,7 +1075,8 @@
                 localStorage.setItem(darkModeKey, !isDark);
             });
 
-            // Initialize theme
+
+
             const savedMode = localStorage.getItem(darkModeKey);
             if (savedMode !== null) {
                 applyDarkMode(savedMode === "true");
@@ -1086,7 +1085,6 @@
                 applyDarkMode(prefersDark);
             }
 
-            // Typing animation
             const typingEl = document.getElementById("typingText");
             const phrases = ["Building scalable web applications", "Creating beautiful user interfaces", "Solving complex problems with code", "Turning ideas into digital reality"];
             let currentPhraseIndex = 0;
@@ -1120,7 +1118,6 @@
                 setTimeout(typeText, isDeleting ? 50 : 100);
             }
 
-            // Scroll animations
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: "0px 0px -50px 0px",
@@ -1138,7 +1135,6 @@
                 observer.observe(el);
             });
 
-            // Skill bars animation
             const skillsObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1158,7 +1154,6 @@
                 skillsObserver.observe(skillsSection);
             }
 
-            // Smooth scrolling for navigation links
             document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
                 anchor.addEventListener("click", function (e) {
                     e.preventDefault();
@@ -1175,7 +1170,6 @@
                 });
             });
 
-            // Progress bar
             const progressBar = document.getElementById("progressBar");
 
             function updateProgressBar() {
@@ -1185,7 +1179,6 @@
                 progressBar.style.width = scrollPercent + "%";
             }
 
-            // Back to top button
             const backToTop = document.getElementById("backToTop");
 
             function toggleBackToTop() {
@@ -1203,13 +1196,11 @@
                 });
             });
 
-            // Scroll event listener
             window.addEventListener("scroll", () => {
                 updateProgressBar();
                 toggleBackToTop();
             });
 
-            // Floating particles
             function createParticle() {
                 const particle = document.createElement("div");
                 particle.className = "particle";
@@ -1245,25 +1236,6 @@
                 }
             }
 
-            // Contact form handling
-            document.getElementById("contactForm").addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                // Simple form validation
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const subject = document.getElementById("subject").value;
-                const message = document.getElementById("message").value;
-
-                if (name && email && subject && message) {
-                    alert("Thank you for your message! I'll get back to you soon.");
-                    this.reset();
-                } else {
-                    alert("Please fill in all fields.");
-                }
-            });
-
-            // Initialize everything
             document.addEventListener("DOMContentLoaded", () => {
                 typeText();
                 addParticles();
@@ -1271,7 +1243,6 @@
                 toggleBackToTop();
             });
 
-            // Handle resize events
             window.addEventListener("resize", () => {
                 updateProgressBar();
             });
